@@ -8,6 +8,7 @@ URL:        http://www.tizen.org
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires: elementary-devel, eina-devel
 BuildRequires: pkgconfig(icu-i18n)
+BuildRequires: libfeedback-devel
 
 %description
 The EFL Modules
@@ -19,7 +20,7 @@ The EFL Modules
 export CFLAGS+=" -fvisibility=hidden -fPIC -Wall"
 export LDFLAGS+=" -fvisibility=hidden -Wl,--hash-style=both -Wl,--as-needed -Wl,-z,defs"
 
-%define DEF_SUBDIRS datetime_input_spinner
+%define DEF_SUBDIRS datetime_input_spinner edje_feedback
 for FILE in %{DEF_SUBDIRS}
 do
     cd $FILE
@@ -44,7 +45,9 @@ done
 %files
 %defattr(-,root,root,-)
 %{_libdir}/elementary/modules/*/*/*.so
+%{_libdir}/edje/modules/*/*/*.so
 %{_datadir}/license/%{name}
 %manifest %{name}.manifest
 ## Below is not needed except Machintosh
 %exclude %{_libdir}/elementary/modules/*/*/*.la
+%exclude %{_libdir}/edje/modules/*/*/*.la
