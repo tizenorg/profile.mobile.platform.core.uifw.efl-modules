@@ -7,6 +7,7 @@ License:    LGPLv2.1+
 URL:        http://www.tizen.org
 Source0:    %{name}-%{version}.tar.gz
 BuildRequires: elementary-devel, eina-devel
+BuildRequires: pkgconfig(icu-i18n)
 
 %description
 The EFL Modules
