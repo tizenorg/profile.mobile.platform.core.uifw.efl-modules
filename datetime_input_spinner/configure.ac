@@ -20,7 +20,7 @@ AC_C_CONST
 # checks for pkg-config
 PKG_PROG_PKG_CONFIG
 
-requirements="elementary"
+requirements="elementary, icu-i18n"
 
 PKG_CHECK_MODULES(ELEMENTARY, [${requirements}])
 
