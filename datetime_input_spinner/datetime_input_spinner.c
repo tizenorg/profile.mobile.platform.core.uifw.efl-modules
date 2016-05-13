@@ -11,6 +11,7 @@
 #define DATETIME_FIELD_COUNT    6
 #define FIELD_FORMAT_LEN        3
 #define BUFF_SIZE               100
+#define _N(s)   dgettext("elementary", s)
 
 typedef struct _Input_Spinner_Module_Data Input_Spinner_Module_Data;
 
@@ -401,7 +402,7 @@ EAPI Evas_Object *
 field_create(Elm_Datetime_Module_Data *module_data, Elm_Datetime_Field_Type  field_type)
 {
    Input_Spinner_Module_Data *layout_mod;
-   Evas_Object *field_obj;
+   Evas_Object *field_obj, *inc_button, *dec_button;
    layout_mod = (Input_Spinner_Module_Data *)module_data;
    if (!layout_mod) return NULL;
 
@@ -431,6 +432,8 @@ field_create(Elm_Datetime_Module_Data *module_data, Elm_Datetime_Field_Type  fie
    else
      {
         field_obj = elm_spinner_add(layout_mod->mod_data.base);
+        inc_button = elm_object_part_content_get(field_obj, "elm.swallow.inc_button");
+        dec_button = elm_object_part_content_get(field_obj, "elm.swallow.dec_button");
         elm_spinner_editable_set(field_obj, EINA_TRUE);
         elm_object_style_set(field_obj, "vertical_date_picker");
         elm_spinner_step_set(field_obj, 1);
@@ -442,6 +445,39 @@ field_create(Elm_Datetime_Module_Data *module_data, Elm_Datetime_Field_Type  fie
           elm_spinner_interval_set(field_obj, 0.1);
         evas_object_smart_callback_add(field_obj, "changed", _spinner_changed_cb, layout_mod);
         evas_object_smart_callback_add(field_obj, "entry,changed", _spinner_entry_changed_cb, layout_mod);
+
+        if (field_type == ELM_DATETIME_HOUR)
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE_HOUR_ACCESS"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE_HOUR_ACCESS"));
+          }
+        else if (field_type == ELM_DATETIME_MINUTE)
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE_MINUTE_ACCESS"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE_MINUTE_ACCESS"));
+          }
+        else if (field_type == ELM_DATETIME_DATE)
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE_DAY"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE_DAY"));
+          }
+        else if (field_type == ELM_DATETIME_MONTH)
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE_MONTH"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE_MONTH"));
+          }
+        else if (field_type == ELM_DATETIME_YEAR)
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE_YEAR"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE_YEAR"));
+          }
+        else
+          {
+             elm_atspi_accessible_name_set(inc_button, _N("IDS_COM_BODY_INCREASE"));
+             elm_atspi_accessible_name_set(dec_button, _N("IDS_COM_BODY_DECREASE"));
+          }
+        elm_atspi_accessible_translation_domain_set(inc_button, "elementary");
+        elm_atspi_accessible_translation_domain_set(dec_button, "elementary");
      }
    evas_object_data_set(field_obj, "_field_type", (void *)field_type);
 
