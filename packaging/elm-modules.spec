@@ -20,7 +20,7 @@ The EFL Modules
 export CFLAGS+=" -fvisibility=hidden -fPIC -Wall"
 export LDFLAGS+=" -fvisibility=hidden -Wl,--hash-style=both -Wl,--as-needed -Wl,-z,defs"
 
-%define DEF_SUBDIRS datetime_input_spinner edje_feedback
+%define DEF_SUBDIRS datetime_input_spinner edje_feedback atspi_output
 for FILE in %{DEF_SUBDIRS}
 do
     cd $FILE
