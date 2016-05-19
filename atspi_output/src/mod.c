@@ -36,12 +36,12 @@ static Eldbus_Object *dobj = NULL;
 static Eldbus_Proxy *proxy = NULL;
 
 static void
-_on_send_text(void *data EINA_UNUSED, const Eldbus_Message *msg, Eldbus_Pending *pending EINA_UNUSED)
+_on_proxy_call(void *data EINA_UNUSED, const Eldbus_Message *msg, Eldbus_Pending *pending EINA_UNUSED)
 {
    const char *errname, *errmsg;
    char *s;
 
-   SLOG(LOG_DEBUG, LOG_TAG, "[START] ?");
+   SLOG(LOG_DEBUG, LOG_TAG, "[START] processing proxy call reply");
    if (eldbus_message_error_get(msg, &errname, &errmsg))
      {
         SLOG(LOG_ERROR, LOG_TAG, "%s %s", errname, errmsg);
@@ -152,17 +152,33 @@ EAPI void
 out_read(const char *txt)
 {
    int ret = 0;
-   SLOG(LOG_DEBUG, LOG_TAG, "[START] sending text (txt: %s)", txt);
+   SLOG(LOG_DEBUG, LOG_TAG, "[START] requesting interruptible reading (txt: %s)", txt);
+   if (!proxy)
+     {
+        SLOG(LOG_ERROR, LOG_TAG, "Proxy object is NULL!");
+        return;
+     }
+   //TODO: remove "Hello" call after dbus communication is verified
+   eldbus_proxy_call(proxy, "Hello", _on_proxy_call, NULL, -1, "s", txt);
+   eldbus_proxy_call(proxy, "ReadCommand", _on_proxy_call, NULL, -1, "sb", txt, EINA_TRUE);
+   return;
+}
+
+
+EAPI void
+out_force_read(const char *txt)
+{
+   int ret = 0;
+   SLOG(LOG_DEBUG, LOG_TAG, "[START] requesting uninterruptible reading (txt: %s)", txt);
    if (!proxy)
      {
         SLOG(LOG_ERROR, LOG_TAG, "Proxy object is NULL!");
         return;
      }
 
-   eldbus_proxy_call(proxy, "Hello", _on_send_text, NULL, -1, "s", txt);
+   eldbus_proxy_call(proxy, "ReadCommand", _on_proxy_call, NULL, -1, "sb", txt, EINA_FALSE);
    return;
 }
-
 
 EAPI void
 out_cancel(void)
