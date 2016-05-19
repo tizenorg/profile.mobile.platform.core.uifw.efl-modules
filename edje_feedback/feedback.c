@@ -1,6 +1,7 @@
 #include <eina_module.h>
 #include <Edje.h>
 #include <feedback.h>
+#include <feedback-internal.h>
 
 static int _edje_feedback_log_dom = -1;
 static int _init_count = 0;
