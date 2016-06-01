@@ -278,7 +278,7 @@ _spinner_special_value_set(Evas_Object *obj, Elm_Datetime_Field_Type field_type,
    ucal_clear(calendar);
 
    //Parse a string into an date/time using a UDateFormat.
-   udat_parseCalendar(dt_formatter, calendar, ufield, sizeof(ufield), &pos, &status);
+   udat_parseCalendar(dt_formatter, calendar, ufield, (sizeof(ufield) / sizeof(UChar)), &pos, &status);
    date = ucal_getMillis(calendar, &status);
    ucal_close(calendar);
 
