@@ -280,7 +280,8 @@ _spinner_special_value_set(Evas_Object *obj, Elm_Datetime_Field_Type field_type,
    if (!dt_formatter) return;
 
    snprintf(buf, sizeof(buf), "%d", val);
-   u_uastrcpy(ufield, buf);
+   u_uastrncpy(ufield, buf, strlen(buf));
+   ufield[BUFF_SIZE - 1] = 0;
    pos = 0;
 
    //Open a UCalendar.
@@ -294,7 +295,7 @@ _spinner_special_value_set(Evas_Object *obj, Elm_Datetime_Field_Type field_type,
    ucal_clear(calendar);
 
    //Parse a string into an date/time using a UDateFormat.
-   udat_parseCalendar(dt_formatter, calendar, ufield, (sizeof(ufield) / sizeof(UChar)), &pos, &status);
+   udat_parseCalendar(dt_formatter, calendar, ufield, (strlen(ufield) + 1), &pos, &status);
    date = ucal_getMillis(calendar, &status);
    ucal_close(calendar);
 
