@@ -13,7 +13,7 @@ AM_CPPFLAGS = \
 -DELEMENTARY_BUILD \
 @ELEMENTARY_CFLAGS@
 
-pkgdir = $(pkglibdir)/modules/datetime_input_spinner/$(MODULE_ARCH)
+pkgdir = $(libdir)/elementary/modules/datetime_input_spinner/$(MODULE_ARCH)
 pkg_LTLIBRARIES = module.la
 
 module_la_SOURCES = datetime_input_spinner.c
@@ -21,3 +21,9 @@ module_la_SOURCES = datetime_input_spinner.c
 module_la_LIBADD = @ELEMENTARY_LIBS@
 module_la_LDFLAGS = -no-undefined -module -avoid-version
 module_la_LIBTOOLFLAGS = --tag=disable-static
+
+SUBDIRS = po
+
+ACLOCAL_AMFLAGS = -I m4
+
+EXTRA_DIST = config.rpath m4/ChangeLog

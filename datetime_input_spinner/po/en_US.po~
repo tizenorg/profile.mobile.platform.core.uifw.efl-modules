@@ -1,0 +1,71 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: efl-modules\n"
+"Report-Msgid-Bugs-To: enlightenment-devel@lists.sourceforge.net\n"
+"POT-Creation-Date: 2012-09-20 13:50+0900\n"
+"PO-Revision-Date: 2016-04-12 19:35+0900\n"
+"Last-Translator: Thiep Ha <thiep.ha@samsung.com>\n"
+"Language-Team: General\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
+
+msgid "AM"
+msgstr "AM"
+
+msgid "PM"
+msgstr "PM"
+
+msgid "Increase by 1 hour"
+msgstr "Increase by 1 hour"
+
+msgid "Decrease by 1 hour"
+msgstr "Decrease by 1 hour"
+
+msgid "IDS_COM_BODY_INCREASE_MINUTE_ACCESS"
+msgstr "Increase by 1 minute"
+
+msgid "IDS_COM_BODY_DECREASE_MINUTE_ACCESS"
+msgstr "Decrease by 1 hour"
+
+msgid "IDS_COM_BODY_INCREASE_DAY"
+msgstr "Increase by 1 day"
+
+msgid "IDS_COM_BODY_DECREASE_DAY"
+msgstr "Decrease by 1 hour"
+
+msgid "IDS_COM_BODY_INCREASE_MONTH"
+msgstr "Increase by 1 month"
+
+msgid "IDS_COM_BODY_DECREASE_MONTH"
+msgstr "Decrease by 1 hour"
+
+msgid "IDS_COM_BODY_INCREASE_YEAR"
+msgstr "Increase by 1 year"
+
+msgid "IDS_COM_BODY_DECREASE_YEAR"
+msgstr "Decrease by 1 year"
+
+msgid "IDS_COM_BODY_INCREASE"
+msgstr "Increase"
+
+msgid "IDS_COM_BODY_DECREASE"
+msgstr "Decrease"
+
+msgid "hour"
+msgstr "hour"
+
+msgid "minute"
+msgstr "minute"
+
+msgid "date"
+msgstr "date"
+
+msgid "month"
+msgstr "month"
+
+msgid "year"
+msgstr "year"
+

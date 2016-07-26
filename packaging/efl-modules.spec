@@ -9,7 +9,7 @@ Source0:    %{name}-%{version}.tar.gz
 BuildRequires: elementary-devel, eina-devel
 BuildRequires: pkgconfig(icu-i18n)
 BuildRequires: libfeedback-devel
-
+BuildRequires: gettext-tools
 %description
 The EFL Modules
 
@@ -44,6 +44,7 @@ done
 
 %files
 %defattr(-,root,root,-)
+/usr/share/locale/*/LC_MESSAGES/*
 %{_libdir}/elementary/modules/*/*/*.so
 %{_libdir}/edje/modules/*/*/*.so
 %{_datadir}/license/%{name}
