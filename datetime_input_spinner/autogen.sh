@@ -2,6 +2,7 @@
 # Run this to generate all the initial makefiles, etc.
 
 set  -x
+autopoint -f
 aclocal
 autoconf
 libtoolize --copy --force

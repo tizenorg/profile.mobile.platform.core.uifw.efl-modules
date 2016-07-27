@@ -1,6 +1,7 @@
 # initialization
-AC_INIT([elementary], [0.1], [])
+AC_INIT([efl-modules], [0.1], [])
 AM_INIT_AUTOMAKE([-Wall foreign])
+AC_CONFIG_MACRO_DIR([m4])
 
 # checks for programs
 AC_PROG_CC
@@ -20,6 +21,26 @@ AC_C_CONST
 # checks for pkg-config
 PKG_PROG_PKG_CONFIG
 
+# gettext
+m4_ifdef([AM_GNU_GETTEXT_VERSION], [
+AM_GNU_GETTEXT_VERSION([0.18])
+])
+
+m4_ifdef([AM_GNU_GETTEXT], [
+AM_GNU_GETTEXT([external])
+po_makefile_in=po/Makefile.in
+have_po="yes"
+],[
+have_po="no"
+])
+AC_SUBST([LTLIBINTL])
+
+if test "x${POSUB}" = "x" ; then
+   have_po="no"
+fi
+
+AM_CONDITIONAL([HAVE_PO], [test "x${have_po}" = "xyes"])
+
 requirements="elementary, icu-i18n"
 
 PKG_CHECK_MODULES(ELEMENTARY, [${requirements}])
@@ -33,6 +54,7 @@ AC_DEFINE_UNQUOTED(MODULE_ARCH, "$MODULE_ARCH", "Module architecture")
 # Generate files
 AC_CONFIG_FILES([
 		 Makefile
+		 $po_makefile_in
 		 ])
 
 AC_OUTPUT
