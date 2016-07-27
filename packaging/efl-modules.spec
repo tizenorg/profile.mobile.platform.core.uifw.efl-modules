@@ -44,6 +44,7 @@ done
 
 %files
 %defattr(-,root,root,-)
+/usr/share/locale/*/LC_MESSAGES/*
 %{_libdir}/elementary/modules/*/*/*.so
 %{_libdir}/edje/modules/*/*/*.so
 %{_datadir}/license/%{name}
