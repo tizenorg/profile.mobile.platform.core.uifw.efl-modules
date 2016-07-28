@@ -443,6 +443,11 @@ field_create(Elm_Datetime_Module_Data *module_data, Elm_Datetime_Field_Type  fie
         evas_object_smart_callback_add(layout_mod->pm_button, "clicked", _ampm_clicked_cb, layout_mod);
         evas_object_show(layout_mod->pm_button);
         elm_box_pack_end(layout_mod->ampm_box, layout_mod->pm_button);
+
+        elm_atspi_accessible_description_set(layout_mod->am_button, dgettext(PACKAGE, "IDS_COM_BODY_TAP_TO_CHANGE"));
+        elm_atspi_accessible_description_set(layout_mod->pm_button, dgettext(PACKAGE, "IDS_COM_BODY_TAP_TO_CHANGE"));
+        elm_atspi_accessible_translation_domain_set(layout_mod->am_button, PACKAGE);
+        elm_atspi_accessible_translation_domain_set(layout_mod->pm_button, PACKAGE);
      }
    else
      {
@@ -466,39 +471,41 @@ field_create(Elm_Datetime_Module_Data *module_data, Elm_Datetime_Field_Type  fie
           {
              elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE_HOUR_ACCESS"));
              elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE_HOUR_ACCESS"));
-             elm_atspi_accessible_name_set(text_button, dgettext(PACKAGE, "hour"));
+             elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "hour"));
           }
         else if (field_type == ELM_DATETIME_MINUTE)
           {
              elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE_MINUTE_ACCESS"));
              elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE_MINUTE_ACCESS"));
-             elm_atspi_accessible_name_set(text_button, dgettext(PACKAGE, "minute"));
+             elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "minute"));
           }
         else if (field_type == ELM_DATETIME_DATE)
           {
              elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE_DAY"));
              elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE_DAY"));
-             elm_atspi_accessible_name_set(text_button, dgettext(PACKAGE, "date"));
+             elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "date"));
           }
         else if (field_type == ELM_DATETIME_MONTH)
           {
              elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE_MONTH"));
              elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE_MONTH"));
-             elm_atspi_accessible_name_set(text_button, dgettext(PACKAGE, "month"));
+             elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "month"));
           }
         else if (field_type == ELM_DATETIME_YEAR)
           {
              elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE_YEAR"));
              elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE_YEAR"));
-             elm_atspi_accessible_name_set(text_button, dgettext(PACKAGE, "year"));
+             elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "year"));
           }
         else
           {
-             elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE"));
-             elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE"));
+            elm_atspi_accessible_name_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_INCREASE"));
+            elm_atspi_accessible_name_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_DECREASE"));
           }
         elm_atspi_accessible_role_set(text_button, ELM_ATSPI_ROLE_EDITBAR);
-        elm_atspi_accessible_description_set(text_button, dgettext(PACKAGE, "double tap to edit"));
+        elm_atspi_accessible_description_set(inc_button, dgettext(PACKAGE, "IDS_COM_BODY_TAP_TO_CHANGE"));
+        elm_atspi_accessible_description_set(dec_button, dgettext(PACKAGE, "IDS_COM_BODY_TAP_TO_CHANGE"));
+        elm_atspi_accessible_translation_domain_set(text_button, PACKAGE);
         elm_atspi_accessible_translation_domain_set(inc_button, PACKAGE);
         elm_atspi_accessible_translation_domain_set(dec_button, PACKAGE);
      }

@@ -54,19 +54,19 @@ msgid "IDS_COM_BODY_DECREASE"
 msgstr "Decrease"
 
 msgid "hour"
-msgstr "hour"
+msgstr "hour, edit-field, double tap to edit"
 
 msgid "minute"
-msgstr "minute"
+msgstr "minute, edit-field, double tap to edit"
 
 msgid "date"
-msgstr "date"
+msgstr "date, edit-field, double tap to edit"
 
 msgid "month"
-msgstr "month"
+msgstr "month, edit-field, double tap to edit"
 
 msgid "year"
-msgstr "year"
+msgstr "year, edit-field, double tap to edit"
 
-msgid "double tap to edit"
-msgstr "double tap to edit"
+msgid "IDS_COM_BODY_TAP_TO_CHANGE"
+msgstr "double tap to change"
