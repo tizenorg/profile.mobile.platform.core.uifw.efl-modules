@@ -9,6 +9,7 @@ Source0:    %{name}-%{version}.tar.gz
 BuildRequires: elementary-devel, eina-devel
 BuildRequires: pkgconfig(icu-i18n)
 BuildRequires: libfeedback-devel
+BuildRequires: gettext
 
 %description
 The EFL Modules
